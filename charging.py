@@ -19,7 +19,9 @@ def check1(device, outlet, suffix, i, N, L):
 
     a_suffix = [suffix[i] | (sel & ~outlet[i]) for i in range(N)]
     if sorted(a_suffix) == d_suffix:
-        n2 = check1(device, outlet, a_suffix, i+1, N, L) + 1
+        n2 = check1(device, outlet, a_suffix, i+1, N, L)
+        if n2 is not None:
+            n2 += 1
 
     if n is not None and n2 is not None:
         return min(n, n2)
